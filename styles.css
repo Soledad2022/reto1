@@ -17,7 +17,7 @@ body{
   padding: 0.5rem;
   margin: 0;
   font-size: 16px;
-  overflow: hidden;/**quita scroll{no se desborda el contenido*/
+  /*overflow: hidden;*quita scroll{no se desborda el contenido*/
 }
 .layout{
   background: #d7dbfd;
