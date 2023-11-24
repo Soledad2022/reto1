@@ -1,43 +1,47 @@
+/*TODO: es mejor usar el rem y em en fontsize y padding margin*/
 *{
   padding: 0;
   margin:0;
   box-sizing: border-box;
   text-decoration: none;
+  line-height: 1.2;/**si el font-size:16px,*/
+
 }
+/*!importante el html debe tener el tamaño 100% */
 html{
   height: 100%;
 }
+/*!el body tambien debe ocupar el 100%*/
 body{
   height: 100%;
-  padding: 0;
+  padding: 0.5rem;
   margin: 0;
   font-size: 16px;
- overflow: hidden;/*quita scroll*/
-  line-height:1.6;
+  overflow: hidden;/**quita scroll{no se desborda el contenido*/
 }
 .layout{
   background: #d7dbfd;
   min-height: 100%;
-  margin: 0.5rem;
-  display:grid;
   border-radius: 0.2em;
+  display:grid;
   grid:
   'header' auto
   'main'  1fr
   'footer' auto
   /1fr;
+  
 }
 header{
   grid-area: "header";
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  overflow: hidden;/*quita scroll*/
+  
 }
 .logos{
   display: flex;
   justify-content: space-around;
-  border-bottom: solid 0.1em #adb3f9ef;
+  box-shadow: 0px 0px 10px 1px #7377a7ef;
 }
 .logo{
   padding: 1em 0.8rem;
@@ -46,34 +50,40 @@ header{
   background: none;
   border:none;
   margin: 0.2em 0.8rem;
-  font-size: 2.5em;
+  padding: 0.2em 0.8rem;
+  /**esto evalua el tamaño de la font minimo,normal,maximo*/
+  font-size: clamp(0.8rem ,1.5rem, 2rem);
   font-weight: bold ;
+}
+.hamburguesa:hover{
+  cursor: pointer;
 }
 nav{
   grid-area: "nav";
   display: flex;
   flex-direction: column;
-  overflow: hidden;/*quita scroll*/
+  
 }
 nav .botones{
   color: #50149e;
   font-family: 'Poppins', sans-serif;
   padding: 0.8em 0;
   text-align: center;
+  font-size: clamp(0.5rem ,0.8rem, 1rem);
   width: 100%;
-  font-size: 0.6rem;
-  transition-property: background;
-  transition-duration: 2000ms;
+  transition-property: background, color;
+  transition-duration: 900ms,500ms;
   transition-timing-function: ease-in;
 }
 .botones:hover{
  background: #8d70b4;
+ color: #f3f4ff;
 }
 #btn-enter{
   background:#50149e;
   color: beige;
-  transition-property: background;
-  transition-duration: 2000ms;
+  transition-property: background, color;
+  transition-duration: 900ms,500ms;
   transition-timing-function: ease-in;
 }
 main{
@@ -81,8 +91,7 @@ main{
   display:flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2em;
-  overflow: hidden;/*quita scroll*/
+  justify-content: center;
 }
 .cabezal-learn{
   margin: 0.5em 0.5em 0 0.5em;
@@ -90,16 +99,17 @@ main{
   background: #50149e;
   border-radius: 10em;
   font-family:'Poppins', sans-serif ;
-
+  text-align: center;
 }
 .cabezal-learn  p{
   color: #cfd3fb;
   padding: 0.5em;
-  font-size: 0.5em;
+  font-size: clamp(0.5rem ,0.8rem, 1rem);
 }
 .cabezal-learn a{
   color: #cfd3fb;
   border-bottom: 1px solid;
+  font-size: clamp(0.5rem ,0.8rem, 1rem);
 }
 .cuerpo-mensaje{
 color: #1b053c;
@@ -110,11 +120,11 @@ text-align: center;
 }
 .titulo{
   font-family: 'Lilita One', sans-serif;
-  font-size: 1em;
+  font-size: clamp(0.5rem ,1rem, 1.5rem);
 }
 .parrafocentral{
   padding: 0.4em;
-  font-size: small;
+  font-size: clamp(0.5rem ,0.8rem, 1rem);
   font-family: 'Poppins', sans-serif;
 }
 
@@ -126,13 +136,18 @@ gap: 0.3em;
 .formulario input{
   border-radius: 0.2em;
   border: none;
+  font-size: clamp(0.5rem ,0.8rem, 1rem);
 }
 #eml-address{
   background: #e6e8f6;
-  font-size: 0.7em;
   font-family: 'Poppins', sans-serif;
   text-align: center;
-  padding: 0.2em;
+  padding: 0.2rem;
+}
+/*!propiedad para editar placeholder*/
+#eml-address::placeholder{
+  font-size: 0.6rem;
+
 }
 #btn-enter2{
   background: #50149e;
@@ -140,25 +155,25 @@ gap: 0.3em;
   color: #cfd3fb;
   padding: 0.1em;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.7em;
-  transition-property: background;
-  transition-duration: 2000ms;
-  transition-timing-function: ease-in;
+  transition-property: background,color;
+  transition-duration: 900ms,500ms;
+  transition-timing-function: ease-out;
 }
 #btn-enter2:hover,#btn-enter:hover{
   background: #8d70b4;
+  color: #f3f4ff;
 }
 footer{
   grid-area: "footer";
-  font-size: 0.5em;
-  margin-top: 0.5em;
+  margin:0.5rem ;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 footer small{
   padding: 0.5em 3em;
   text-align: center;
-  font-size: 1.6em;
+  font-size: clamp(0.5rem ,0.8rem, 1rem);
   font-family: 'Poppins', sans-serif;
 
 }
@@ -166,22 +181,16 @@ footer small{
 {
   display: flex;
   flex-direction: row;
-  padding: 1em;
-  font-size: 0.1em;
+  padding: 0.8rem;
+  align-items: center;
   flex-wrap: nowrap;
-
 }
 .footer-navegador a{
   min-width: 20%;
-  height: auto;
   text-align: center;
 }
 .footer-navegador a img{
-  max-width: 70vw;
-  max-height: 70vh;
-  
+  max-width: 50%;
+  max-height: 50%;
 }
-img{
-  max-width: 100%;
-  height: auto;
-}
+
